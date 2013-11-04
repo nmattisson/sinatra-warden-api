@@ -1,4 +1,4 @@
-# Securing a REST API with Warden Using Access Tokens
+# Securing a Sinatra REST API with Warden Using Access Tokens
 
 This is a very simple example of how to secure a Sinatra API with Warden using access tokens instead of a username/password combination. I wrote this because I myself couldn't find a working example of how to configure Warden with Sinatra for this purpose.
 
@@ -11,12 +11,18 @@ To keep it simple, and the dependencies to a minium, I'm just using string match
 
 ## Getting Started
 First you need to install Sinatra and Warden:
+
     $ gem install sinatra
     $ gem install warden
+
 Clone this repository and start the server using rackup:
+
     $ rackup -p 4567
+
 Go to http://localhost:4567/ using any web browser and you should see the 'Hello World' message (encoded in JSON). To test the authorization make a HTTP GET request to http://localhost:4567/protected embedding the string 'youhavenoprivacyandnosecrets' as access_token. A good way to make this request is to use the [Advanced REST Client Chrome Extension](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo) but  you can also use CURL:
+
     $ curl -i -H "access_token: youhavenoprivacyandnosecrets" http://localhost:4567/protected
+
 You should see a message saying the request was authenticated.
 
 Feel free to ask any [questions](https://twitter.com/nmattisson).
